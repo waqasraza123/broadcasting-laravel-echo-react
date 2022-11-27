@@ -52,15 +52,6 @@ export default function Box(props){
         );
     }
 
-    function SortBoxes(){
-        const colors = ["red", "yellow", "green", "blue", "pink", "grey"];
-        return(
-            colors.map((color, index) => {
-                return <BoxComponent key={index} height="40px" width="100px" color={color} />
-            })
-        );
-    }
-
     //return component markup
     return(
         <>

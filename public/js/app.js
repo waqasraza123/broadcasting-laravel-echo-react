@@ -3996,16 +3996,6 @@ function Box(props) {
       }, item.id);
     });
   }
-  function SortBoxes() {
-    var colors = ["red", "yellow", "green", "blue", "pink", "grey"];
-    return colors.map(function (color, index) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BoxComponent, {
-        height: "40px",
-        width: "100px",
-        color: color
-      }, index);
-    });
-  }
 
   //return component markup
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
