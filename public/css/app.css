@@ -760,9 +760,6 @@ select {
 .h-20 {
   height: 5rem;
 }
-.h-12 {
-  height: 3rem;
-}
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1045,13 +1042,13 @@ select {
   font-size: 1rem;
   line-height: 1.5rem;
 }
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
 .text-6xl {
   font-size: 3.75rem;
   line-height: 1;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 .font-medium {
   font-weight: 500;

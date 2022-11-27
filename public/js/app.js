@@ -3908,16 +3908,16 @@ function VerifyEmail(_ref) {
 
 /***/ }),
 
-/***/ "./resources/js/Pages/Box.js":
-/*!***********************************!*\
-  !*** ./resources/js/Pages/Box.js ***!
-  \***********************************/
+/***/ "./resources/js/Pages/BoxComponent.js":
+/*!********************************************!*\
+  !*** ./resources/js/Pages/BoxComponent.js ***!
+  \********************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ Box)
+/* harmony export */   "default": () => (/* binding */ BoxComponent)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
@@ -3938,8 +3938,7 @@ __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
-
-function Box(props) {
+function BoxComponent(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
     data = _useState2[0],
@@ -3955,7 +3954,6 @@ function Box(props) {
     window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response) {
       //set state of data
       setData(response.boxes);
-      console.log(data);
     });
 
     //listen for Email SentEvent
@@ -3965,19 +3963,7 @@ function Box(props) {
     });
   });
 
-  //box component
-  function BoxComponent(props) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-      className: "h-12 w-20",
-      style: {
-        "height": props.height,
-        "width": props.width,
-        "backgroundColor": props.color
-      }
-    });
-  }
-
-  //email sent component
+  //email sent message component
   function EmailSent(props) {
     if (props.message) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
@@ -3989,24 +3975,61 @@ function Box(props) {
     }
   }
 
-  //renders multiple box components
-  function getBoxComponent() {
-    return data.map(function (item) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BoxComponent, {
-        height: item.height + "px",
-        width: item.width + "px",
-        color: item.color
-      }, item.id);
+  //box component
+  function Box(props) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      style: {
+        "height": props.height,
+        "width": props.width,
+        "backgroundColor": props.color
+      }
     });
+  }
+  function boxMarkup() {
+    if (data.length == 0) {
+      return "";
+    }
+    if (data.length == 1) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "col-1",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Box, {
+          height: data.height + "px",
+          width: data.height + "px",
+          color: data.color
+        })
+      });
+    }
+    if (data.length == 2) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "col-2",
+        children: data.map(function (item) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Box, {
+            height: item.height + "px",
+            width: item.height + "px",
+            color: item.color
+          }, item.id);
+        })
+      });
+    }
+    if (data.length == 4) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "col-4",
+        children: data.map(function (item) {
+          return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Box, {
+            height: item.height + "px",
+            width: item.height + "px",
+            color: item.color
+          }, item.id);
+        })
+      });
+    }
   }
 
   //return component markup
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
       message: emailSentMessage.message
-    }), data.length > 0 ? getBoxComponent() : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-      children: "Loading"
-    })]
+    }), boxMarkup()]
   });
 }
 
@@ -64218,8 +64241,8 @@ var map = {
 	"./Auth/VerifyEmail": "./resources/js/Pages/Auth/VerifyEmail.js",
 	"./Auth/VerifyEmail.js": "./resources/js/Pages/Auth/VerifyEmail.js",
 	"./Auth/VerifyEmail.jsx": "./resources/js/Pages/Auth/VerifyEmail.jsx",
-	"./Box": "./resources/js/Pages/Box.js",
-	"./Box.js": "./resources/js/Pages/Box.js",
+	"./BoxComponent": "./resources/js/Pages/BoxComponent.js",
+	"./BoxComponent.js": "./resources/js/Pages/BoxComponent.js",
 	"./Dashboard": "./resources/js/Pages/Dashboard.js",
 	"./Dashboard.js": "./resources/js/Pages/Dashboard.js",
 	"./Welcome": "./resources/js/Pages/Welcome.js",

@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('test', function (){
 
-    Mail::to("waqasraza123@gmail.com")
-        ->send(new \App\Mail\TaskCompletedMail());
-
-    dd("here");
+//    Mail::to("waqasraza123@gmail.com")
+//        ->send(new \App\Mail\TaskCompletedMail());
+//
+//    dd("here");
 
     $rows = \App\Models\Box::count();
 
@@ -32,5 +32,5 @@ Route::get('test', function (){
 });
 
 Route::get('/', function (){
-    return Inertia::render("Box");
+    return Inertia::render("BoxComponent");
 });
