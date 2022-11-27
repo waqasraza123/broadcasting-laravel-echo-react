@@ -2102,7 +2102,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ BoxComponent)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _Pages_SortShuffleButtons__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/Pages/SortShuffleButtons */ "./resources/js/Pages/SortShuffleButtons.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
@@ -2114,6 +2115,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
+
 
 
 /**
@@ -2134,47 +2136,36 @@ function BoxComponent(props) {
     _useState4 = _slicedToArray(_useState3, 2),
     boxItems = _useState4[0],
     setBoxItems = _useState4[1];
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
-    _useState6 = _slicedToArray(_useState5, 2),
-    emailSentMessage = _useState6[0],
-    setEmailSentMessage = _useState6[1];
 
-  //listen to state changes in data
-  //call boxMarkup to render boxes
+  /**
+   * listen for state change on data
+   * when setData is called we fire boxMarkup function
+   */
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     boxMarkup();
   }, [data]);
 
-  //component mounted to the dom
+  /**
+   * start listening for data
+   * when the component mounts/renders
+   */
   (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
     //listen for BoxCreatedEvent
     window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response) {
-      //set state of data
+      //update the data state
+      //overwrite the old data
       setData(response.boxes);
-    });
-
-    //listen for Email SentEvent
-    window.Echo.channel("email.sent").listen("EmailSentEvent", function (response) {
-      //set state of emailSentMessage
-      setEmailSentMessage(response.message);
     });
   });
 
-  //email sent message component
-  function EmailSent(props) {
-    if (props.message) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-        className: "text-6xl",
-        children: props.message
-      });
-    } else {
-      return "";
-    }
-  }
-
-  //box component
+  /**
+   * Box Component
+   * @param props
+   * @returns {JSX.Element}
+   * @constructor
+   */
   function Box(props) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       style: {
         "height": props.height,
         "width": props.width,
@@ -2183,77 +2174,121 @@ function BoxComponent(props) {
     });
   }
 
-  //returns box markup
+  /**
+   * creates box grid markup
+   * updates state
+   */
   function boxMarkup() {
-    var newBox = data.length == 0 ? "" : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+    var newBox = data.length == 0 ? "" : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       className: "columns-" + data.length,
       children: data.map(function (item) {
-        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(Box, {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(Box, {
           height: item.height + "px",
           width: item.width + "px",
           color: item.color
         }, item.id);
       })
-    });
+    }, data.length);
 
     //set the state of boxItems
     setBoxItems([].concat(_toConsumableArray(boxItems), [newBox]));
   }
-
-  //sort the data by color name
-  function handleSort() {
-    var sortedData = _toConsumableArray(data).sort(function (a, b) {
-      return a.color.localeCompare(b.color);
-    });
-
-    //update the state with sorted data
-    setData(sortedData);
-  }
-
-  //shuffle the colors array
-  function handleShuffle() {
-    var shuffledData = _.shuffle(_toConsumableArray(data));
-
-    //update the state with shuffled data
-    setData(shuffledData);
-  }
-
-  //render sort and shuffle buttons
-  function renderButtons() {
-    if (data.length >= 16) {
-      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "buttons-wrapper p-9",
-        style: {
-          width: "100%"
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: handleSort,
-          boxes: data,
-          className: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded",
-          children: "Sort Boxes"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
-          onClick: handleShuffle,
-          boxes: data,
-          className: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded",
-          children: "Shuffle Boxes"
-        })]
-      });
-    }
-  }
-
-  //return component markup
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: [renderButtons(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.Fragment, {
+    children: [data.length >= 16 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)(_Pages_SortShuffleButtons__WEBPACK_IMPORTED_MODULE_1__.SortShuffleButtons, {
+      data: data,
+      dataStateChanger: setData
+    }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_2__.jsx)("div", {
       style: {
         "display": "grid",
         "gridTemplateColumns": "auto auto auto auto auto"
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
-        message: emailSentMessage.message
-      }), boxItems]
+      children: boxItems
     })]
   });
 }
+
+/***/ }),
+
+/***/ "./resources/js/Pages/SortShuffleButtons.js":
+/*!**************************************************!*\
+  !*** ./resources/js/Pages/SortShuffleButtons.js ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "SortShuffleButtons": () => (/* binding */ SortShuffleButtons)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+
+/**
+ *
+ * renders Sort and Shuffle buttons
+ *
+ * @param props
+ * @returns {JSX.Element}
+ * @constructor
+ */
+
+
+var SortShuffleButtons = function SortShuffleButtons(props) {
+  /**
+   * Sorts the data by color name
+   * updates the data state => setData
+   * @param props
+   */
+  function handleSort() {
+    var sortedData = _toConsumableArray(props.data).sort(function (a, b) {
+      return a.color.localeCompare(b.color);
+    });
+
+    //update the state with sorted data
+    props.dataStateChanger(sortedData);
+  }
+
+  /**
+   * Shuffles the data
+   * updates the data state => setData
+   * @param props
+   */
+  function handleShuffle() {
+    var shuffledData = _.shuffle(_toConsumableArray(props.data));
+
+    //update the state with shuffled data
+    props.dataStateChanger(shuffledData);
+  }
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    className: "buttons-wrapper p-9",
+    style: {
+      width: "100%"
+    },
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        return handleSort(props);
+      },
+      className: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded",
+      children: "Sort Boxes"
+    }, props.data.id), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+      onClick: function onClick() {
+        return handleShuffle(props);
+      },
+      className: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded",
+      children: "Shuffle Boxes"
+    }, props.data.id)]
+  });
+};
+
+//export button component
+
 
 /***/ }),
 
@@ -62125,7 +62160,9 @@ module.exports = function getSideChannel() {
 
 var map = {
 	"./BoxComponent": "./resources/js/Pages/BoxComponent.js",
-	"./BoxComponent.js": "./resources/js/Pages/BoxComponent.js"
+	"./BoxComponent.js": "./resources/js/Pages/BoxComponent.js",
+	"./SortShuffleButtons": "./resources/js/Pages/SortShuffleButtons.js",
+	"./SortShuffleButtons.js": "./resources/js/Pages/SortShuffleButtons.js"
 };
 
 
