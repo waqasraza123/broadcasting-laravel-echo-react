@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Mail;
 
 Route::get('test', function (){
 
-//    Mail::to("waqasraza123@gmail.com")
-//        ->send(new \App\Mail\TaskCompletedMail());
-//
-//    dd("here");
-
     $rows = \App\Models\Box::count();
 
     $rows = ($rows == 0 || $rows == 1) ? 1 : $rows;

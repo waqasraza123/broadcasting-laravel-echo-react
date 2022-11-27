@@ -1,3 +1,18 @@
+# How to Use
+Run the following services  
+`php artisan serve`  
+`php artisan schedule:work`  
+`php artisan queue:work`  
+`npm run watch`
+
+visit the homepage at `localhost:8000`
+when the scheduler runs, a box will be printed.  
+when 16 boxes are complete Shuffle/Sort buttons will appear.
+
+To bypass the wait time for schedule  
+open `localhost:8000` and visit `localhost:8000/test`
+everytime the test url is run, the box will appear on the homepage.
+
 # Use Case #1
 A scheduler runs every 2 minutes to schedule and event to create enteries in the database table "boxes", once the entry is created in the db, that data is broadcasted to the frontend. On the frontend I am using Laravel Echo and Inertiajs to connect React with Laravel backend. Once the data reaches the frontend via Laravel Echo, I insert a box on the UI with the data coming from boxes table. Every time the scheduler runs, the boxes double until 16 and then the scheduler stops and sends the email to the user about task completion.
 

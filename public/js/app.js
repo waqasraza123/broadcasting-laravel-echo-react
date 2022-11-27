@@ -4038,7 +4038,7 @@ function BoxComponent(props) {
 
   //render sort and shuffle buttons
   function renderButtons() {
-    if (data.length >= 0) {
+    if (data.length >= 16) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
         className: "buttons-wrapper p-9",
         style: {

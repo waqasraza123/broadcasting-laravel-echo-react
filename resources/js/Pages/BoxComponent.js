@@ -86,7 +86,7 @@ export default function BoxComponent(props){
 
     //render sort and shuffle buttons
     function renderButtons(){
-        if (data.length >= 0){
+        if (data.length >= 16){
             return(
                 <div className="buttons-wrapper p-9" style={{width: "100%"}}>
                     <button onClick={handleSort} boxes={data}
