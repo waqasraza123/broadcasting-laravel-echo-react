@@ -60,8 +60,7 @@ class BoxCreatedEvent implements ShouldBroadcastNow
         //when the task is finished
         $count = Box::count();
         if($count >= 16){
-            //webdevelopers@hurak.co.uk
-            Mail::to("waqasraza123@gmail.com")->queue(new TaskCompletedMail());
+            Mail::to(env("MAIL_TO_ADDRESS"))->queue(new TaskCompletedMail());
         }
 
         return $box;
