@@ -26,6 +26,10 @@ Route::get('test', function (){
     BoxCreatedEvent::dispatch($rows);
 });
 
+Route::get('test/email', function (){
+    Mail::to(env("MAIL_TO_ADDRESS"))->queue(new \App\Mail\TaskCompletedMail());
+});
+
 Route::get('/', function (){
     return Inertia::render("BoxComponent");
 });
