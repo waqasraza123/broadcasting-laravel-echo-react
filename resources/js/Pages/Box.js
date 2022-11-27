@@ -1,5 +1,5 @@
 require('../bootstrap');
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 /**
  *
@@ -12,17 +12,20 @@ export default function Box(props){
     const [data, setData] = useState([]);
     const [emailSentMessage, setEmailSentMessage] = useState("");
 
-    //listen for BoxCreatedEvent
-    window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response){
-        //set state of data
-        setData(response.boxes);
-        console.log(data);
-    });
+    //component mounted to the dom
+    useEffect(() => {
+        //listen for BoxCreatedEvent
+        window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response){
+            //set state of data
+            setData(response.boxes);
+            console.log(data);
+        });
 
-    //listen for Email SentEvent
-    window.Echo.channel("email.sent").listen("EmailSentEvent", function (response){
-        //set state of emailSentMessage
-        setEmailSentMessage(response.message);
+        //listen for Email SentEvent
+        window.Echo.channel("email.sent").listen("EmailSentEvent", function (response){
+            //set state of emailSentMessage
+            setEmailSentMessage(response.message);
+        });
     });
 
     //box component

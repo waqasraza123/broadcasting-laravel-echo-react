@@ -3949,17 +3949,20 @@ function Box(props) {
     emailSentMessage = _useState4[0],
     setEmailSentMessage = _useState4[1];
 
-  //listen for BoxCreatedEvent
-  window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response) {
-    //set state of data
-    setData(response.boxes);
-    console.log(data);
-  });
+  //component mounted to the dom
+  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
+    //listen for BoxCreatedEvent
+    window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response) {
+      //set state of data
+      setData(response.boxes);
+      console.log(data);
+    });
 
-  //listen for Email SentEvent
-  window.Echo.channel("email.sent").listen("EmailSentEvent", function (response) {
-    //set state of emailSentMessage
-    setEmailSentMessage(response.message);
+    //listen for Email SentEvent
+    window.Echo.channel("email.sent").listen("EmailSentEvent", function (response) {
+      //set state of emailSentMessage
+      setEmailSentMessage(response.message);
+    });
   });
 
   //box component
