@@ -10,7 +10,14 @@ import React, {useEffect, useState} from 'react';
 export default function BoxComponent(props){
 
     const [data, setData] = useState([]);
+    const [boxItems, setBoxItems] = useState([]);
     const [emailSentMessage, setEmailSentMessage] = useState("");
+
+    //listen to state changes in data
+    //call boxMarkup to render boxes
+    useEffect(() => {
+        boxMarkup();
+    }, [data]);
 
     //component mounted to the dom
     useEffect(() => {
@@ -45,46 +52,26 @@ export default function BoxComponent(props){
         );
     }
 
+    //returns box markup
     function boxMarkup(){
-
-        if(data.length == 0){
-            return "";
-        }
-
-        if(data.length == 1){
-            return(
-                <div className="col-1">
-                    <Box height={data.height + "px"} width={data.height + "px"} color={data.color} />
-                </div>
-            );
-        }
-
-        if(data.length == 2){
-            return(
-                <div className="col-2">
+        const newBox = data.length == 0 ? "" :
+            (
+                <div className={"columns-" + data.length}>
                     {
-                        data.map(item => <Box key={item.id} height={item.height + "px"} width={item.height + "px"} color={item.color} />)
+                        data.map(item => <Box key={item.id} height={item.height + "px"} width={item.width + "px"} color={item.color}/>)
                     }
                 </div>
             );
-        }
 
-        if(data.length == 4){
-            return(
-                <div className="col-4">
-                    {
-                        data.map(item => <Box key={item.id} height={item.height + "px"} width={item.height + "px"} color={item.color} />)
-                    }
-                </div>
-            );
-        }
+        //set the state of boxItems
+        setBoxItems([...boxItems, newBox]);
     }
 
     //return component markup
     return(
-        <div>
+        <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
             <EmailSent message={emailSentMessage.message} />
-            {boxMarkup()}
+            {boxItems}
         </div>
     );
 }
