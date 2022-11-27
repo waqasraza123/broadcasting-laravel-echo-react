@@ -67,10 +67,33 @@ export default function BoxComponent(props){
         setBoxItems([...boxItems, newBox]);
     }
 
+
+    function Button(props){
+        //props.length == 16 show buttons
+    }
+
+    function renderButtons(){
+        if (data.length >= 16){
+            return(
+                <div className="buttons-wrapper">
+                    <button
+                        className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                        Sort Boxes
+                    </button>
+                    <button
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded">
+                        Shuffle Boxes
+                    </button>
+                </div>
+            );
+        }
+    }
+
     //return component markup
     return(
         <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
             <EmailSent message={emailSentMessage.message} />
+            {renderButtons()}
             {boxItems}
         </div>
     );

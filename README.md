@@ -39,3 +39,15 @@ to default queue/no delays/gets processed instantly/at priority.
 # Mail
 Emails are only being sent via gmail smtp servers.
 Mailgun is not working. (Its a drivers issue).
+
+# Use Case #2
+SortBoxes will sort the boxes color-wise
+red  
+red  
+red  
+blue  
+blue  
+.  
+.  
+.  
+ShuffleBoxes will randomize the above.

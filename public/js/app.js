@@ -4016,6 +4016,23 @@ function BoxComponent(props) {
     //set the state of boxItems
     setBoxItems([].concat(_toConsumableArray(boxItems), [newBox]));
   }
+  function Button(props) {
+    //props.length == 16 show buttons
+  }
+  function renderButtons() {
+    if (data.length >= 16) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "buttons-wrapper",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          className: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded",
+          children: "Sort Boxes"
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          className: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded",
+          children: "Shuffle Boxes"
+        })]
+      });
+    }
+  }
 
   //return component markup
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
@@ -4025,7 +4042,7 @@ function BoxComponent(props) {
     },
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
       message: emailSentMessage.message
-    }), boxItems]
+    }), renderButtons(), boxItems]
   });
 }
 
