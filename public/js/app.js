@@ -4030,7 +4030,10 @@ function BoxComponent(props) {
 
   //shuffle the colors array
   function handleShuffle() {
-    //const boxes = props.boxes;
+    var shuffledData = _.shuffle(_toConsumableArray(data));
+
+    //update the state with shuffled data
+    setData(shuffledData);
   }
 
   //render sort and shuffle buttons

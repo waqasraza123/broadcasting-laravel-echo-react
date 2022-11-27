@@ -78,7 +78,10 @@ export default function BoxComponent(props){
 
     //shuffle the colors array
     function handleShuffle(){
-        //const boxes = props.boxes;
+        const shuffledData = _.shuffle([...data]);
+
+        //update the state with shuffled data
+        setData(shuffledData);
     }
 
     //render sort and shuffle buttons
