@@ -7,12 +7,15 @@
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^7.0.1",
-        "inertiajs/inertia-laravel": "",
+        "guzzlehttp/guzzle": "^7.5",
+        "inertiajs/inertia-laravel": "0.6.*",
         "laravel/breeze": "1.9.2",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
+        "pusher/pusher-php-server": "^7.2",
+        "symfony/http-client": "^5.4",
+        "symfony/mailgun-mailer": "^5.4",
         "tightenco/ziggy": "^1.5"
     },
     "require-dev": {

@@ -2,11 +2,24 @@
 
 namespace App\Console;
 
+use App\Events\BoxCreatedEvent;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Box;
 
 class Kernel extends ConsoleKernel
 {
+
+    /**
+     * returns 0 initially when table is empty
+     * returns number of rows in boxes table
+     */
+    protected function getNumberOfBoxes(){
+        //get the number of boxes
+        $count = Box::count();
+        return ($count == 0 || $count == 1) ? 1 : $count;
+    }
+
     /**
      * Define the application's command schedule.
      *
@@ -15,8 +28,20 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
 
+        $numberOfBoxes = $this->getNumberOfBoxes();
+
+
+        //dispatch the event to create a box every 2 minutes
+        $schedule->call(function () use ($numberOfBoxes){
+            BoxCreatedEvent::dispatch($numberOfBoxes);
+        })
+        ->everyMinute()
+        ->when(function() use ($numberOfBoxes) {
+            //this scheduler will run until
+            //box table has less than 8 rows
+            return $numberOfBoxes <= 16;
+        });
     }
 
     /**

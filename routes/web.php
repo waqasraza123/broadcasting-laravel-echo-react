@@ -1,8 +1,10 @@
 <?php
 
+use App\Events\BoxCreatedEvent;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,21 +17,20 @@ use Inertia\Inertia;
 |
 */
 
+Route::get('test', function (){
+
+    Mail::to("waqasraza123@gmail.com")
+        ->queue(new \App\Mail\TaskCompletedMail());
+
+    dd("here");
+
+    $rows = \App\Models\Box::count();
+
+    $rows = ($rows == 0 || $rows == 1) ? 1 : $rows;
+
+    BoxCreatedEvent::dispatch($rows);
+});
+
 Route::get('/', function (){
     return Inertia::render("Box");
 });
-
-Route::get('/home', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-require __DIR__.'/auth.php';
