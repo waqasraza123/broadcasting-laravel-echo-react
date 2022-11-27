@@ -3942,6 +3942,7 @@ __webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
  */
 
 
+
 function BoxComponent(props) {
   var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
     _useState2 = _slicedToArray(_useState, 2),
@@ -4016,17 +4017,38 @@ function BoxComponent(props) {
     //set the state of boxItems
     setBoxItems([].concat(_toConsumableArray(boxItems), [newBox]));
   }
-  function Button(props) {
-    //props.length == 16 show buttons
+
+  //sort the data by color name
+  function handleSort() {
+    var sortedData = _toConsumableArray(data).sort(function (a, b) {
+      return a.color.localeCompare(b.color);
+    });
+
+    //update the state with sorted data
+    setData(sortedData);
   }
+
+  //shuffle the colors array
+  function handleShuffle() {
+    //const boxes = props.boxes;
+  }
+
+  //render sort and shuffle buttons
   function renderButtons() {
-    if (data.length >= 16) {
+    if (data.length >= 0) {
       return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-        className: "buttons-wrapper",
+        className: "buttons-wrapper p-9",
+        style: {
+          width: "100%"
+        },
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: handleSort,
+          boxes: data,
           className: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded",
           children: "Sort Boxes"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("button", {
+          onClick: handleShuffle,
+          boxes: data,
           className: "bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded",
           children: "Shuffle Boxes"
         })]
@@ -4035,14 +4057,16 @@ function BoxComponent(props) {
   }
 
   //return component markup
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-    style: {
-      "display": "grid",
-      "gridTemplateColumns": "auto auto auto auto auto"
-    },
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
-      message: emailSentMessage.message
-    }), renderButtons(), boxItems]
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [renderButtons(), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      style: {
+        "display": "grid",
+        "gridTemplateColumns": "auto auto auto auto auto"
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
+        message: emailSentMessage.message
+      }), boxItems]
+    })]
   });
 }
 

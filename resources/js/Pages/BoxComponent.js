@@ -67,20 +67,30 @@ export default function BoxComponent(props){
         setBoxItems([...boxItems, newBox]);
     }
 
+    //sort the data by color name
+    function handleSort(){
 
-    function Button(props){
-        //props.length == 16 show buttons
+        const sortedData = [...data].sort((a, b) => a.color.localeCompare(b.color));
+
+        //update the state with sorted data
+        setData(sortedData);
     }
 
+    //shuffle the colors array
+    function handleShuffle(){
+        //const boxes = props.boxes;
+    }
+
+    //render sort and shuffle buttons
     function renderButtons(){
-        if (data.length >= 16){
+        if (data.length >= 0){
             return(
-                <div className="buttons-wrapper">
-                    <button
+                <div className="buttons-wrapper p-9" style={{width: "100%"}}>
+                    <button onClick={handleSort} boxes={data}
                         className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                         Sort Boxes
                     </button>
-                    <button
+                    <button onClick={handleShuffle} boxes={data}
                         className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-red-700 rounded">
                         Shuffle Boxes
                     </button>
@@ -91,10 +101,12 @@ export default function BoxComponent(props){
 
     //return component markup
     return(
-        <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
-            <EmailSent message={emailSentMessage.message} />
+        <>
             {renderButtons()}
-            {boxItems}
-        </div>
+            <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
+                <EmailSent message={emailSentMessage.message} />
+                {boxItems}
+            </div>
+        </>
     );
 }
