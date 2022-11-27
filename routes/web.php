@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Mail;
 Route::get('test', function (){
 
     Mail::to("waqasraza123@gmail.com")
-        ->queue(new \App\Mail\TaskCompletedMail());
+        ->send(new \App\Mail\TaskCompletedMail());
 
     dd("here");
 

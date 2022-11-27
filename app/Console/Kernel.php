@@ -37,10 +37,8 @@ class Kernel extends ConsoleKernel
             BoxCreatedEvent::dispatch($numberOfBoxes);
         })
         ->everyMinute()
-        ->when(function() use ($numberOfBoxes) {
-            //this scheduler will run until
-            //box table has less than 8 rows
-            return $numberOfBoxes <= 16;
+        ->skip(function() use ($numberOfBoxes) {
+            return $numberOfBoxes >= 16;
         });
     }
 
