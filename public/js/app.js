@@ -3912,9 +3912,110 @@ function VerifyEmail(_ref) {
 /*!***********************************!*\
   !*** ./resources/js/Pages/Box.js ***!
   \***********************************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /Users/apple/PhpstormProjects/Development Code/laravel/resources/js/Pages/Box.js: 'import' and 'export' may only appear at the top level. (29:4)\n\n\u001b[0m \u001b[90m 27 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 28 |\u001b[39m     \u001b[90m//box component\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 29 |\u001b[39m     \u001b[36mexport\u001b[39m \u001b[36mfunction\u001b[39m \u001b[33mBoxComponent\u001b[39m(props){\u001b[0m\n\u001b[0m \u001b[90m    |\u001b[39m     \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 30 |\u001b[39m         \u001b[36mreturn\u001b[39m(\u001b[0m\n\u001b[0m \u001b[90m 31 |\u001b[39m             \u001b[33m<\u001b[39m\u001b[33mdiv\u001b[39m className\u001b[33m=\u001b[39m\u001b[32m\"h-12 w-20\"\u001b[39m style\u001b[33m=\u001b[39m{{ \u001b[32m\"height\"\u001b[39m\u001b[33m:\u001b[39m props\u001b[33m.\u001b[39mheight\u001b[33m,\u001b[39m \u001b[32m\"width\"\u001b[39m\u001b[33m:\u001b[39m props\u001b[33m.\u001b[39mwidth\u001b[33m,\u001b[39m \u001b[32m\"backgroundColor\"\u001b[39m\u001b[33m:\u001b[39m props\u001b[33m.\u001b[39mcolor }}\u001b[33m>\u001b[39m\u001b[33m<\u001b[39m\u001b[33m/\u001b[39m\u001b[33mdiv\u001b[39m\u001b[33m>\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 32 |\u001b[39m         )\u001b[33m;\u001b[39m\u001b[0m\n    at instantiate (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:67:32)\n    at constructor (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:364:12)\n    at JSXParserMixin.raise (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:3364:19)\n    at JSXParserMixin.parseStatementContent (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13007:18)\n    at JSXParserMixin.parseStatement (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12917:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13497:25)\n    at JSXParserMixin.parseBlockBody (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13489:10)\n    at JSXParserMixin.parseBlock (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13477:10)\n    at JSXParserMixin.parseFunctionBody (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12287:24)\n    at JSXParserMixin.parseFunctionBodyAndFinish (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12271:10)\n    at /Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13637:12\n    at JSXParserMixin.withSmartMixTopicForbiddingContext (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12617:14)\n    at JSXParserMixin.parseFunction (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13636:10)\n    at JSXParserMixin.parseFunctionStatement (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13276:17)\n    at JSXParserMixin.parseStatementContent (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12947:21)\n    at JSXParserMixin.parseStatement (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12917:17)\n    at JSXParserMixin.parseExportDeclaration (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:14181:17)\n    at JSXParserMixin.maybeParseExportDeclaration (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:14135:31)\n    at JSXParserMixin.parseExport (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:14058:29)\n    at JSXParserMixin.parseStatementContent (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13020:27)\n    at JSXParserMixin.parseStatement (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12917:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13497:25)\n    at JSXParserMixin.parseBlockBody (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:13489:10)\n    at JSXParserMixin.parseProgram (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12832:10)\n    at JSXParserMixin.parseTopLevel (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:12822:25)\n    at JSXParserMixin.parse (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:14674:10)\n    at parse (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/parser/lib/index.js:14716:38)\n    at parser (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/core/lib/parser/index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/core/lib/transformation/normalize-file.js:66:38)\n    at normalizeFile.next (<anonymous>)\n    at run (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/core/lib/transformation/index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/@babel/core/lib/transform.js:22:41)\n    at transform.next (<anonymous>)\n    at step (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/gensync/index.js:261:32)\n    at /Users/apple/PhpstormProjects/Development Code/laravel/node_modules/gensync/index.js:273:13\n    at async.call.result.err.err (/Users/apple/PhpstormProjects/Development Code/laravel/node_modules/gensync/index.js:223:11)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* binding */ Box)
+/* harmony export */ });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+__webpack_require__(/*! ../bootstrap */ "./resources/js/bootstrap.js");
+
+
+/**
+ *
+ * @param props = data from the controller
+ * @returns {JSX.Element}
+ * @constructor
+ */
+
+
+
+function Box(props) {
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)([]),
+    _useState2 = _slicedToArray(_useState, 2),
+    data = _useState2[0],
+    setData = _useState2[1];
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(""),
+    _useState4 = _slicedToArray(_useState3, 2),
+    emailSentMessage = _useState4[0],
+    setEmailSentMessage = _useState4[1];
+
+  //listen for BoxCreatedEvent
+  window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response) {
+    //set state of data
+    setData(response.boxes);
+    console.log(data);
+  });
+
+  //listen for Email SentEvent
+  window.Echo.channel("email.sent").listen("EmailSentEvent", function (response) {
+    //set state of emailSentMessage
+    setEmailSentMessage(response.message);
+  });
+
+  //box component
+  function BoxComponent(props) {
+    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+      className: "h-12 w-20",
+      style: {
+        "height": props.height,
+        "width": props.width,
+        "backgroundColor": props.color
+      }
+    });
+  }
+
+  //email sent component
+  function EmailSent(props) {
+    if (props.message) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+        className: "text-6xl",
+        children: props.message
+      });
+    } else {
+      return "";
+    }
+  }
+
+  //renders multiple box components
+  function getBoxComponent() {
+    return data.map(function (item) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BoxComponent, {
+        height: item.height + "px",
+        width: item.width + "px",
+        color: item.color
+      }, item.id);
+    });
+  }
+  function SortBoxes() {
+    var colors = ["red", "yellow", "green", "blue", "pink", "grey"];
+    return colors.map(function (color, index) {
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(BoxComponent, {
+        height: "40px",
+        width: "100px",
+        color: color
+      }, index);
+    });
+  }
+
+  //return component markup
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(EmailSent, {
+      message: emailSentMessage.message
+    }), data.length > 0 ? getBoxComponent() : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
+      children: "Loading"
+    })]
+  });
+}
 
 /***/ }),
 

@@ -26,7 +26,7 @@ export default function Box(props){
     });
 
     //box component
-    export function BoxComponent(props){
+    function BoxComponent(props){
         return(
             <div className="h-12 w-20" style={{ "height": props.height, "width": props.width, "backgroundColor": props.color }}></div>
         );
