@@ -1,3 +1,5 @@
+import axios from "axios";
+
 require('../bootstrap');
 import React, {useEffect, useState} from 'react';
 import {SortShuffleButtons} from "@/Pages/SortShuffleButtons";
@@ -26,8 +28,10 @@ export default function BoxComponent(props){
     /**
      * start listening for data
      * when the component mounts/renders
+     * only runs once
      */
     useEffect(() => {
+
         //listen for BoxCreatedEvent
         window.Echo.channel("box.created").listen("BoxCreatedEvent", function (response){
 
@@ -35,7 +39,19 @@ export default function BoxComponent(props){
             //overwrite the old data
             setData(response.boxes);
         });
-    });
+
+        //fetch data from the database
+        const boxesData = async () => {
+            let res = await axios.get("http://localhost:8000/boxes");
+            res = await res.data;
+            console.log(res);
+            setData(res);
+        }
+
+        //catch errors
+        boxesData()
+            .catch(err => console.log(err));
+    }, []);
 
     /**
      * Box Component
@@ -54,23 +70,26 @@ export default function BoxComponent(props){
      * updates state
      */
     function boxMarkup(){
-        const newBox = data.length == 0 ? "" :
-            (
-                <div key={data.length} className={"columns-" + data.length}>
-                    {
-                        data.map(item => <Box key={item.id} height={item.height + "px"} width={item.width + "px"} color={item.color}/>)
-                    }
-                </div>
-            );
 
-        //set the state of boxItems
-        setBoxItems([...boxItems, newBox]);
+        if(data){
+            const newBox = data.length == 0 ? "" :
+                (
+                    <div key={data.length} className={"columns-" + data.length}>
+                        {
+                            data.map(item => <Box key={item.id} height={item.height + "px"} width={item.width + "px"} color={item.color}/>)
+                        }
+                    </div>
+                );
+
+            //set the state of boxItems
+            setBoxItems([...boxItems, newBox]);
+        }
     }
 
 
     return(
         <>
-            { data.length >= 16 ? <SortShuffleButtons data={data} dataStateChanger={setData} /> : "" }
+            { (data && data.length) >= 16 ? <SortShuffleButtons data={data} dataStateChanger={setData} /> : "" }
             <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
                 {boxItems}
             </div>

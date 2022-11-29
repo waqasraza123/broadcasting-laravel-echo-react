@@ -5,6 +5,7 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\BoxController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,3 +34,4 @@ Route::get('test/email', function (){
 Route::get('/', function (){
     return Inertia::render("BoxComponent");
 });
+Route::get('/boxes', [BoxController::class, "index"]);
