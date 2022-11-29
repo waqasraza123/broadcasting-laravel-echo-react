@@ -1,7 +1,3 @@
-# Todo
-Code refactoring/spitting   
-Mail drivers issue (implementation is fine)
-
 # How to Use
 Run the following services  
 `php artisan serve`  
