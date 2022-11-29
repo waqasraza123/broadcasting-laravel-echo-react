@@ -19,6 +19,9 @@ const SortShuffleButtons = (props) => {
 
         const sortedData = [...props.data].sort((a, b) => a.color.localeCompare(b.color));
 
+        //reset the previous data
+        props.boxItemsStateChanger([]);
+
         //update the state with sorted data
         props.dataStateChanger(sortedData);
     }
@@ -31,6 +34,9 @@ const SortShuffleButtons = (props) => {
     function handleShuffle(){
 
         const shuffledData = _.shuffle([...props.data]);
+
+        //reset the previous data
+        props.boxItemsStateChanger([]);
 
         //update the state with shuffled data
         props.dataStateChanger(shuffledData);

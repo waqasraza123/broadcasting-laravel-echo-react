@@ -44,7 +44,6 @@ export default function BoxComponent(props){
         const boxesData = async () => {
             let res = await axios.get("http://localhost:8000/boxes");
             res = await res.data;
-            console.log(res);
             setData(res);
         }
 
@@ -89,7 +88,11 @@ export default function BoxComponent(props){
 
     return(
         <>
-            { (data && data.length) >= 16 ? <SortShuffleButtons data={data} dataStateChanger={setData} /> : "" }
+            { (data && data.length) >= 16 ? <SortShuffleButtons
+                data={data} dataStateChanger={setData}
+                boxItemsStateChanger={setBoxItems} /> : ""
+            }
+
             <div style={{"display": "grid", "gridTemplateColumns": "auto auto auto auto auto"}}>
                 {boxItems}
             </div>

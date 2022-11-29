@@ -2181,9 +2181,8 @@ function BoxComponent(props) {
                 return res.data;
               case 5:
                 res = _context.sent;
-                console.log(res);
                 setData(res);
-              case 8:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -2241,7 +2240,8 @@ function BoxComponent(props) {
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
     children: [(data && data.length) >= 16 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_Pages_SortShuffleButtons__WEBPACK_IMPORTED_MODULE_2__.SortShuffleButtons, {
       data: data,
-      dataStateChanger: setData
+      dataStateChanger: setData,
+      boxItemsStateChanger: setBoxItems
     }) : "", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
       style: {
         "display": "grid",
@@ -2296,6 +2296,9 @@ var SortShuffleButtons = function SortShuffleButtons(props) {
       return a.color.localeCompare(b.color);
     });
 
+    //reset the previous data
+    props.boxItemsStateChanger([]);
+
     //update the state with sorted data
     props.dataStateChanger(sortedData);
   }
@@ -2307,6 +2310,9 @@ var SortShuffleButtons = function SortShuffleButtons(props) {
    */
   function handleShuffle() {
     var shuffledData = _.shuffle(_toConsumableArray(props.data));
+
+    //reset the previous data
+    props.boxItemsStateChanger([]);
 
     //update the state with shuffled data
     props.dataStateChanger(shuffledData);
